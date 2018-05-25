@@ -3,10 +3,11 @@ package concurso;
 
 public abstract class Participante {
 	
-	byte[] resultado;
+	final byte NUM_CASILLAS = 8;
+	byte[] resultado = new byte[NUM_CASILLAS];
 	
-	public void setResultado(byte[] a) {
-		this.resultado = a;
+	public void setResultado(byte[] resultado) {
+		this.resultado = resultado;
 	}
 	
 	public abstract byte[] crearCombPropuesta();
