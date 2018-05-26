@@ -5,26 +5,28 @@ import java.util.Random;
 
 public class Concurso {
 
-	ArrayList<Participante> participantes = new ArrayList<Participante>();
-	ArrayList<Participante> ganadores = new ArrayList<Participante>();
+	ArrayList<String> participantes = new ArrayList<String>();
+	ArrayList<String> ganadores = new ArrayList<String>();
 
 	Concurso() {
-		participantes.add(new Pablo());
-		participantes.add(new Salva());
-		participantes.add(new Migue());
-		participantes.add(new AleD());
-		participantes.add(new AleS());
-		participantes.add(new Ruben());
-		participantes.add(new Jaime());
-		participantes.add(new Adri());
-		participantes.add(new Ismael());
-		participantes.add(new Esther());
-		participantes.add(new Lidia());
-		participantes.add(new Alvaro());
-		participantes.add(new Lolo());
-		participantes.add(new Maria());
-		participantes.add(new Nicolas());
+		participantes.add("Pablo");
+		participantes.add("Migue");
+		participantes.add("Salva");
+		participantes.add("AleDiaz");
+		participantes.add("AleSanchez");
+		participantes.add("Ruben");
+		participantes.add("Jaime");
+		participantes.add("Adri");
+		participantes.add("Ismael");
+		participantes.add("Esther");
+		participantes.add("Lidia");
+		participantes.add("Alvaro");
+		participantes.add("Lolo");
+		participantes.add("Maria");
+		participantes.add("Nicolas");
 	}
+	
+	//Si se le introducen menos de 4 participantes, no funciona.
 
 	public void comprobarGanador() {
 		final String MARRON = "\u001B[33m";
@@ -36,31 +38,34 @@ public class Concurso {
 		int numero, i;
 		String podio[] = new String[3];
 		final byte NUMRONDAS = 5;
-		Participante jugador1, jugador2, jugador3, jugador4;
-
-		do {
-			numero = rnd.nextInt(participantes.size());
-			jugador1 = participantes.get(numero);
-			participantes.remove(numero);
-
-			numero = rnd.nextInt(participantes.size());
-			jugador2 = participantes.get(numero);
-			participantes.remove(numero);
-
-			combate = new Combate(jugador1, jugador2);
-
-			ganadores.add(combate.comprobarGanadorCombate(NUMRONDAS));
-
-			if (participantes.isEmpty()) {
+		String jugador1, jugador2, jugador3, jugador4;
+		
+		// No entra en el bucle si la cantidad de participantes es 4 o menos, o sea, la ronda semifinal.
+		
+		while (!(participantes.size() <= 4 && ganadores.isEmpty())) {
+			if(participantes.size()+ganadores.size()==4 || participantes.size()<=1) {
+				for (i = 0; i < participantes.size(); i++) {
+					if (!participantes.isEmpty()) {
+						ganadores.add(participantes.get(i));
+					}
+				}
 				for (i = 0; i < ganadores.size(); i++) {
 					participantes.add(ganadores.get(i));
 				}
-				ganadores.clear();
-			} else if (participantes.size() == 1) {
-				ganadores.add(participantes.get(0));
-			}
+			}else {
+				numero = rnd.nextInt(participantes.size());
+				jugador1 = participantes.get(numero);
+				participantes.remove(numero);
 
-		} while (participantes.size() == 4 && ganadores.isEmpty());
+				numero = rnd.nextInt(participantes.size());
+				jugador2 = participantes.get(numero);
+				participantes.remove(numero);
+
+				combate = new Combate(jugador1, jugador2);
+
+				ganadores.add(combate.comprobarGanadorCombate(NUMRONDAS));
+			}
+		}
 
 		// Termina el bucle cuando llega a semifinales.
 
