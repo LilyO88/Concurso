@@ -3,8 +3,8 @@ package concurso;
 
 public abstract class Participante {
 	
-	final byte NUM_CASILLAS = 8;
-	byte[] resultado = new byte[NUM_CASILLAS];
+	private final byte NUM_CASILLAS_RESULTADO = 2;
+	protected byte[] resultado = new byte[NUM_CASILLAS_RESULTADO];
 	
 	public void setResultado(byte[] resultado) {
 		this.resultado = resultado;
