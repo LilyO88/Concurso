@@ -2,19 +2,22 @@ package concurso;
 
 import java.util.Arrays;
 
+import esther.Esther;
+import migue.Migue;
+
 public class Partida {
 	/*
 	 * La clase Partida instancia una partida de maximo 200 intentos donde dos
 	 * jugadores juegan para adivinar el codigo contrario.
 	 *
 	 */
-	protected byte numRonda = 1;
+	protected int numRonda = 1;
 	private Participante jugador1;
 	private Participante jugador2;
 	private byte[] resultado1;
 	private byte[] resultado2;
-	private final int NUMRONDAS = 200;
 	private boolean esGanador;
+	private final int NUMRONDAS = 200;
 	private byte[] combinacionOcultaJugador1;
 	private byte[] combinacionOcultaJugador2;
 	private byte[] combinacionPropuestaJugador1;
@@ -22,10 +25,8 @@ public class Partida {
 	private byte[] mejorCombinacionJugador1 = { 0, 0 };
 	private byte[] mejorCombinacionJugador2 = { 0, 0 };
 
-
-	/*
-	 * Instancia una partida
-	 */
+	// Instancia una partida
+	
 	Partida(String jugador1, String jugador2) {
 		this.jugador1=seleccionaJugadores(jugador1);
 		this.jugador2=seleccionaJugadores(jugador2);
@@ -33,6 +34,8 @@ public class Partida {
 	
 	private Participante seleccionaJugadores(String participanteString) {
 		Participante jugador;
+		//jugador = new ();
+		//*
 		switch(participanteString) {
 		case "Pablo":
 			jugador = new Pablo();
@@ -76,7 +79,7 @@ public class Partida {
 		case "Nicolast":
 			jugador = new Nicolast();
 			break;
-		}
+		}//*/
 		return jugador;
 	}
 	
@@ -121,6 +124,32 @@ public class Partida {
 			comprobarResultado(mejorCombinacionJugador2, resultado2);
 
 			// Dibujar
+			/*		SOLO LA ÚLTIMA COMBINACIÓN
+			if (numRonda==1) {
+				System.out.print("     ");
+				dibujar(combinacionOcultaJugador2,null);
+				System.out.print("                 ");
+				dibujar(combinacionOcultaJugador1,null);
+				System.out.println();
+				try {
+					Thread.sleep(1000);		// Milisegundos que tarda en pasar de ronda
+				}catch (InterruptedException e){
+					System.out.println();
+				}
+			}
+			if (Arrays.equals(combinacionOcultaJugador1, combinacionPropuestaJugador2)
+					|| Arrays.equals(combinacionOcultaJugador2, combinacionPropuestaJugador1)) {
+				esGanador =  true;
+				System.out.printf("%3d  ",numRonda);
+				dibujar(combinacionPropuestaJugador1, resultado2);
+				System.out.print("  ");
+				dibujar(combinacionPropuestaJugador2, resultado1);
+				System.out.println();
+			}
+			numRonda++;//*/
+			
+			
+			//*		TODAS LAS COMBINACIONES
 			if (numRonda==1) {
 				System.out.print("     ");
 				dibujar(combinacionOcultaJugador2,null);
@@ -138,11 +167,12 @@ public class Partida {
 			dibujar(combinacionPropuestaJugador1, resultado2);
 			System.out.print("  ");
 			dibujar(combinacionPropuestaJugador2, resultado1);
-			System.out.println();
+			System.out.println();//*/
+			//*
 			if (Arrays.equals(combinacionOcultaJugador1, combinacionPropuestaJugador2)
 					|| Arrays.equals(combinacionOcultaJugador2, combinacionPropuestaJugador1)) {
 				esGanador =  true;
-			}
+			}//*/
 
 			
 			
@@ -163,14 +193,6 @@ public class Partida {
 		return resultado;
 
 	}
-
-//	public void setCombinacionPropuestaJugador1(byte[] combinacionPropuestaJugador1) {
-//		this.combinacionPropuestaJugador1 = combinacionPropuestaJugador1;
-//	}
-//
-//	public void setCombinacionPropuestaJugador2(byte[] combinacionPropuestaJugador2) {
-//		this.combinacionPropuestaJugador2 = combinacionPropuestaJugador2;
-//	}
 
 	public void comprobarResultado(byte[] resultadoAntiguo, byte[] resultadoNuevo) {
 		if (resultadoNuevo[0] > resultadoAntiguo[0]) {
