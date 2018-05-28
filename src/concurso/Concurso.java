@@ -20,10 +20,9 @@ public class Concurso {
 		participantes.add("Ismael");
 		participantes.add("Esther");
 		participantes.add("Lidia");
-		participantes.add("Alvaro");
 		participantes.add("Lolo");
 		participantes.add("Maria");
-		participantes.add("Nicolas");
+		participantes.add("Nicolast");
 	}
 	
 	//Si se le introducen menos de 4 participantes, no funciona.
@@ -44,8 +43,8 @@ public class Concurso {
 		
 		while (!(participantes.size() <= 4 && ganadores.isEmpty())) {
 			if(participantes.size()+ganadores.size()==4 || participantes.size()<=1) {
-				for (i = 0; i < participantes.size(); i++) {
-					if (!participantes.isEmpty()) {
+				if (!participantes.isEmpty()) {
+					for (i = 0; i < participantes.size(); i++) {
 						ganadores.add(participantes.get(i));
 					}
 				}
