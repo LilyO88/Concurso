@@ -26,53 +26,53 @@ public class Partida {
 	 * Instancia una partida
 	 */
 	Partida(String jugador1, String jugador2) {
-		seleccionaJugadores(jugador1);
-		seleccionaJugadores(jugador2);
+		seleccionaJugadores(jugador1,this.jugador1);
+		seleccionaJugadores(jugador2,this.jugador2);
 	}
 	
-	private void seleccionaJugadores(String participante) {
-		switch(participante) {
+	private void seleccionaJugadores(String participanteString,Participante jugador) {
+		switch(participanteString) {
 		case "Pablo":
-			participante = new Pablo();
+			jugador = new Pablo();
 			break;
 		case "Migue":
-			participante = new Migue();
+			jugador = new Migue();
 			break;
 		case "Salva":
-			participante = new Salva();
+			jugador = new Salva();
 			break;
 		case "AleDiaz":
-			participante = new AleDiaz();
+			jugador = new AleDiaz();
 			break;
 		case "AleSanchez":
-			participante = new AleSanchez();
+			jugador = new AleSanchez();
 			break;
 		case "Ruben":
-			participante = new Ruben();
+			jugador = new Ruben();
 			break;
 		case "Jaime":
-			participante = new Jaime();
+			jugador = new Jaime();
 			break;
 		case "Adri":
-			participante = new Adri();
+			jugador = new Adri();
 			break;
 		case "Ismael":
-			participante = new Ismael();
+			jugador = new Ismael();
 			break;
 		case "Esther":
-			participante = new Esther();
+			jugador = new Esther();
 			break;
 		case "Lidia":
-			participante = new Lidia();
+			jugador = new Lidia();
 			break;
 		case "Lolo":
-			participante = new Lolo();
+			jugador = new Lolo();
 			break;
 		case "Maria":
-			participante = new Maria();
+			jugador = new Maria();
 			break;
 		case "Nicolast":
-			participante = new Nicolast();
+			jugador = new Nicolast();
 			break;
 		}
 	}
