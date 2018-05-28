@@ -14,17 +14,28 @@ public class Combate {
 		this.jugador2=jugador2;
 		rondasGanadasJ1=0;
 		rondasGanadasJ2=0;
+		System.out.println("Jugador 1: "+jugador1+"\nJugador 2: "+jugador2);
 	}
 	
 	// Métodos
 	protected String comprobarGanadorCombate(byte maxRondas) {
 		String ganador=null;
+		byte numPartida=1;
 		do {
+			if (numPartida!=1)
+				System.out.print("\n\n\n");
+			System.out.println("Partida nº "+numPartida);
 			jugarPartida();
-			if (rondasGanadasJ1==maxRondas)
+			if (rondasGanadasJ1==maxRondas) {
 				ganador=jugador1;
-			else if (rondasGanadasJ2==maxRondas)
+				System.out.println("Ha ganado "+jugador1);
+				System.out.print("\n\n\n");
+			}else if (rondasGanadasJ2==maxRondas) {
 				ganador=jugador2;
+				System.out.println("Ha ganado "+jugador2);
+				System.out.print("\n\n\n");
+			}
+			numPartida++;
 		}while(ganador==null);
 		return ganador;
 	}
