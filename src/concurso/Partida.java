@@ -25,9 +25,56 @@ public class Partida {
 	/*
 	 * Instancia una partida
 	 */
-	Partida(Participante jugador1, Participante jugador2) {
-		this.jugador1 = jugador1;
-		this.jugador2 = jugador2;
+	Partida(String jugador1, String jugador2) {
+		seleccionaJugadores(jugador1);
+		seleccionaJugadores(jugador2);
+	}
+	
+	private void seleccionaJugadores(String participante) {
+		switch(participante) {
+		case "Pablo":
+			participante = new Pablo();
+			break;
+		case "Migue":
+			participante = new Migue();
+			break;
+		case "Salva":
+			participante = new Salva();
+			break;
+		case "AleDiaz":
+			participante = new AleDiaz();
+			break;
+		case "AleSanchez":
+			participante = new AleSanchez();
+			break;
+		case "Ruben":
+			participante = new Ruben();
+			break;
+		case "Jaime":
+			participante = new Jaime();
+			break;
+		case "Adri":
+			participante = new Adri();
+			break;
+		case "Ismael":
+			participante = new Ismael();
+			break;
+		case "Esther":
+			participante = new Esther();
+			break;
+		case "Lidia":
+			participante = new Lidia();
+			break;
+		case "Lolo":
+			participante = new Lolo();
+			break;
+		case "Maria":
+			participante = new Maria();
+			break;
+		case "Nicolast":
+			participante = new Nicolast();
+			break;
+		}
 	}
 	
 	public byte partidaDificil() {
